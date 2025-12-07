@@ -1,13 +1,13 @@
-# Implementation Plan: [FEATURE]
+# Implementation Plan: In-Memory Todo CLI
 
-**Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
-**Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
+**Branch**: `001-in-memory-todo-cli` | **Date**: 2025-12-06 | **Spec**: specs/001-in-memory-todo-cli/spec.md
+**Input**: Feature specification from `specs/001-in-memory-todo-cli/spec.md`
 
 **Note**: This template is filled in by the `/sp.plan` command. See `.specify/templates/commands/plan.md` for the execution workflow.
 
 ## Summary
 
-[Extract from feature spec: primary requirement + technical approach from research]
+This plan outlines the implementation for Phase I of the "Evolution of Todo" project, focusing on a Command Line Interface (CLI) application with in-memory task management. The core functionality includes adding, viewing, updating, deleting, and completing tasks. The technical approach leverages Python 3.13+, `uv` for package management, and `pytest` for testing, adhering strictly to a `Task` dataclass for data modeling, a `TodoManager` for business logic, and a `main.py` entry point for the CLI interaction. All efforts are guided by the project constitution's principles of TDD, explicit typing, and clean code.
 
 ## Technical Context
 
@@ -39,7 +39,7 @@
 ### Documentation (this feature)
 
 ```text
-specs/[###-feature]/
+specs/001-in-memory-todo-cli/
 ├── plan.md              # This file (/sp.plan command output)
 ├── research.md          # Phase 0 output (/sp.plan command)
 ├── data-model.md        # Phase 1 output (/sp.plan command)
@@ -49,51 +49,19 @@ specs/[###-feature]/
 ```
 
 ### Source Code (repository root)
-<!--
-  ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
-  for this feature. Delete unused options and expand the chosen structure with
-  real paths (e.g., apps/admin, packages/something). The delivered plan must
-  not include Option labels.
--->
 
 ```text
-# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
 src/
-├── models/
-├── services/
-├── cli/
-└── lib/
+├── task_model.py
+├── todo_manager.py
+└── main.py
 
 tests/
-├── contract/
-├── integration/
-└── unit/
-
-# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
-backend/
-├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
-└── tests/
-
-frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
-└── tests/
-
-# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
-api/
-└── [same as backend above]
-
-ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
+├── test_task_model.py
+└── test_todo_manager.py
 ```
 
-**Structure Decision**: [Document the selected structure and reference the real
-directories captured above]
+**Structure Decision**: The single project structure is chosen for Phase I as per the project constitution, with dedicated files for the Task model, TodoManager logic, and the main CLI entry point, along with corresponding unit tests.
 
 ## Complexity Tracking
 

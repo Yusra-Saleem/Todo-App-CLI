@@ -1,55 +1,69 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+---
+sync_impact_report:
+  version_change: "0.0.0 -> 1.0.0"
+  modified_principles:
+    - "PRINCIPLE_1_NAME -> Evolutionary Architecture"
+    - "PRINCIPLE_2_NAME -> Business First"
+    - "PRINCIPLE_3_NAME -> No \"Magic Code\""
+    - "PRINCIPLE_4_NAME -> Monorepo Structure"
+  added_sections:
+    - "Technical Stack"
+    - "Quality Standards"
+    - "Directories & Structure"
+  removed_sections:
+    - "[SECTION_2_NAME]"
+    - "[SECTION_3_NAME]"
+  templates_updated:
+    - ".specify/templates/plan-template.md"
+    - ".specify/templates/spec-template.md"
+    - ".specify/templates/tasks-template.md"
+  todos: []
+---
+-->
+# Hackathon Phase02 Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Evolutionary Architecture
+We start as a Console App (Phase I) and evolve into a Cloud-Native System (Phase V). This phased approach allows for rapid initial development while planning for future scalability.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Business First
+Focus on delivering user value quickly. Phase I must be simple and fast; we must avoid over-engineering and premature optimization. Features should be driven by immediate user needs.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. No "Magic Code"
+All code must be explicit, typed, and documented. This ensures clarity, maintainability, and reduces cognitive overhead for developers. Implicit behaviors or undocumented side effects are strictly forbidden.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Monorepo Structure
+The project will eventually separate into `/frontend` and `/backend` directories but will start as a single, simple structure. This simplifies initial setup and tooling while providing a clear path for future separation of concerns.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+## Technical Stack (Phased)
 
-### [PRINCIPLE_6_NAME]
+- **Global**: Python 3.13+, `uv` package manager, and Conventional Commits for version control.
+- **Phase I (Current)**:
+    - **Interface**: Command Line Interface (CLI).
+    - **Storage**: In-Memory (Variables/Classes).
+    - **Logic**: Pure Python (No web frameworks).
+- **Phase II+ (Future)**:
+    - **Frontend**: Next.js 16+ (App Router), TypeScript, Tailwind CSS.
+    - **Backend**: FastAPI, SQLModel.
+    - **Database**: Neon Serverless PostgreSQL.
 
+## Quality Standards (Immutable)
 
-[PRINCIPLE__DESCRIPTION]
+- **Type Hints**: All Python functions and methods MUST have complete type hints (e.g., `def add(a: int, b: int) -> int:`).
+- **Docstrings**: All public classes, functions, and methods MUST have docstrings explaining their purpose, arguments, and return values.
+- **Test-Driven Development (TDD)**: Write tests first. Use `pytest` for all Python logic. Every new feature or bug fix must begin with a failing test.
+- **Clean Code**: Use Dataclasses for data models. Strictly separate data structures (Models) from business logic (Controllers), even in simple scripts, to maintain a clean architecture.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Directories & Structure
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- **/specs**: Stores all specification files, organized by phase (e.g., `specs/phase-1/`).
+- **/src**: Contains the source code for the current phase. This will move to `/backend` in Phase II.
+- **/tests**: Contains all `pytest` files, mirroring the source code structure.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution is the single source of truth for project standards and supersedes all other practices. Amendments require a documented proposal, team review, and an explicit migration plan for existing code. All code reviews must verify compliance with these principles.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-12-06 | **Last Amended**: 2025-12-06

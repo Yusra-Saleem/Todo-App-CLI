@@ -1,0 +1,15 @@
+# Python-specific patterns
+__pycache__/
+*.pyc
+.venv/
+venv/
+dist/
+*.egg-info/
+
+# Universal patterns
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+.vscode/
+.idea/
